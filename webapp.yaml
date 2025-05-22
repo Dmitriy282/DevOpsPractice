@@ -37,8 +37,8 @@ spec:
             # - name: wwwdata
             #   mountPath: /var/wordpress
 
-            - name: data
-              mountPath: /var/www
+            #- name: data
+            #  mountPath: /var/www
 
 
 

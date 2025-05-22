@@ -24,11 +24,11 @@ spec:
             readOnly: true
             mountPath: /var/www/index.php
             subPath: index.php
-        volumes:
-          - name: nginx-conf-file
-            configMap:
-              defaultMode: 420
-              name: nginx-config
+      volumes:
+        - name: nginx-conf-file
+          configMap:
+            defaultMode: 420
+            name: nginx-config
 
 ---
 apiVersion: v1
