@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: php
+        imagePullPolicy: Never
         image: myphp
         ports:
         - containerPort: 9000
@@ -29,6 +30,7 @@ spec:
           configMap:
             defaultMode: 420
             name: nginx-config
+
 
 ---
 apiVersion: v1
