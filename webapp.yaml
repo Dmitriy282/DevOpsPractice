@@ -19,6 +19,53 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+
+            - mountPath: /var/cache/nginx
+              name: varlog
+
+            - mountPath: /var/log
+              name: varcache
+
+            - mountPath: /var/log/nginx
+              name: varlog
+              subPath: nginx
+
+            - mountPath: /tmp
+              name: tmp
+
+            # - name: wwwdata
+            #   mountPath: /var/wordpress
+
+            - name: data
+              mountPath: /var/www
+
+
+
+            - name: nginx-conf-file
+              readOnly: true
+              mountPath: /etc/nginx/conf.d/site.com
+              subPath: site.conf
+
+            - name: nginx-conf-file
+              readOnly: true
+              mountPath: /var/www/index.php
+              subPath: index.php
+      volumes:
+      - name: tmp
+        emptyDir: {}
+
+      - name: varlog
+        emptyDir: {}
+
+      - name: varcache
+        emptyDir: {}
+
+      - name: nginx-conf-file
+        configMap:
+          defaultMode: 420
+          name: nginx-config
+
 
 ---
 apiVersion: v1

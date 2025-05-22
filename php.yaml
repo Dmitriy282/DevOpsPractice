@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-deployment
+  labels:
+    app: php
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+      - name: php
+        image: php
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+          - name: nginx-conf-file
+            readOnly: true
+            mountPath: /var/www/index.php
+            subPath: index.php
+        volumes:
+          - name: nginx-conf-file
+            configMap:
+              defaultMode: 420
+              name: nginx-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-service
+spec:
+  type: ClusterIP
+  selector:
+    app: php
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
