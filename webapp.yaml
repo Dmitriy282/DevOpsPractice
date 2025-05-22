@@ -44,7 +44,7 @@ spec:
 
             - name: nginx-conf-file
               readOnly: true
-              mountPath: /etc/nginx/conf.d/site.com
+              mountPath: /etc/nginx/conf.d/site.conf
               subPath: site.conf
 
             - name: nginx-conf-file
