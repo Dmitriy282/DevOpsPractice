@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: php
-        image: php
+        image: myphp
         ports:
         - containerPort: 9000
         volumeMounts:
