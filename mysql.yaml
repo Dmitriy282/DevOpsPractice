@@ -83,4 +83,4 @@ metadata:
   name: mysql-pass3
 type: Opaque
 data:
-  password: UGFzc3dvcmQhCg==
+  password: cGFzc3dvcmQ=
