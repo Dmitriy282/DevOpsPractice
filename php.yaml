@@ -21,16 +21,16 @@ spec:
         ports:
         - containerPort: 9000
         volumeMounts:
-          - name: nginx-conf-file
-            readOnly: true
-            mountPath: /var/www/index.php
-            subPath: index.php
+          - name: wordpressdata
+            mountPath: /var/www/
       volumes:
         - name: nginx-conf-file
           configMap:
             defaultMode: 420
             name: nginx-config
-
+        - name: wordpressdata
+            persistentVolumeClaim:
+              claimName: wordpressdata-claim
 
 ---
 apiVersion: v1
