@@ -65,8 +65,8 @@ spec:
           defaultMode: 420
           name: nginx-config
       - name: wordpressdata
-          persistentVolumeClaim:
-            claimName: wordpressdata-claim
+        persistentVolumeClaim:
+          claimName: wordpressdata-claim
 
 ---
 apiVersion: v1
